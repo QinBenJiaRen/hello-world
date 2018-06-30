@@ -1,0 +1,26 @@
+Linux系统安装：apt-get install git
+判断是否安装成功：命令行中输入git
+
+git使用步骤：
+1.git init      初始化git仓库
+2.git status    查看状态，查看当前仓库文件状态，使用比较频繁
+3.git add       新增文件
+4.git commit    提交文件
+  git commit -m 'first commit'    -m表示提交信息
+  在运行git commit之前，需要先设置用户信息
+  git config --global user.email "jia_haifeng@yeah.net"
+  或者
+  git config --global user.name "qinbenjiaren" 
+5.git log       查看所有产生的commit记录
+6.git branch    查看当前分支情况
+7.git branch a  建立一个和master一样内容的分支
+8.git checkout a 切换到分支a
+  git branch -b a 新建一个a分支，并且自动切换到a分支
+9.git merge     合并分支
+  第一步：切换到master分支
+  第二步：get merge a 将a的代码合并到master
+10.git branch -d a 删除分支
+11.git branch -D a 强制删除分支a
+12.git tag V1.0 在当前代码状态下新建一个V1.0标签，输入git tag可以查看历史tag信息
+   想要切换到某个tag,执行git checkout V1.0
+  
