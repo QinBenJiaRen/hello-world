@@ -1,0 +1,8 @@
+1.生成ssh key
+  Linux和Mac都是默认安装了SSH，Windows系统里安装Git Bash应该也是带了SSH.
+  测试是否安装了SSH，直接在终端中输入SSH
+2.ssh-keygen -t rsa 指定算法生成密钥，接着连续三个回车键（不需要生成密码），然后就会生成两个文件id_rsa和id_rsa.pub,而id_rsa是密钥，id_rsa.pub
+  公钥。
+  这两个文件的默认生成路径：
+  Linux和Mac是在～/.ssh下
+  接下来就是要把id_rsa.pub的内容添加到Github上，这样本地的id_rsa密钥跟id_rsa.pub公钥进行配对，授权成功才可以提交代码。
