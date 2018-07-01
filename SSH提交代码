@@ -18,5 +18,9 @@
   git pull origin master
   把远程最新代码更新到本地。
   一般在push之前都会pull，这样不容易冲突。
+6.提交代码
+  克隆项目到本地
+  git clone git@github.com:qinbenjiaren/hello-world
+  这时候该项目本身就是一个git仓库了，不需要进行git init初始化，
   
   
