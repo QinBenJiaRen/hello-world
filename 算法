@@ -1,0 +1,15 @@
+二分查找
+Python 实现
+def binary_search(list, item):
+low = 0
+hight = len(list) - 1
+while low <= hight:
+    mid = (low + hight) / 2
+    guss = list[mid]
+    if guss < item:
+      low = mid + 1
+    if guss = item:
+      return mid
+    if guss > item:
+      high = mid -1
+return None      
