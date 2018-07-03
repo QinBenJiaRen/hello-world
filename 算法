@@ -13,3 +13,6 @@ while low <= hight:
     if guss > item:
       high = mid -1
 return None      
+
+
+背包，队列和栈
