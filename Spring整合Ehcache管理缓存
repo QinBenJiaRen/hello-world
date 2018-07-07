@@ -1,0 +1,22 @@
+Ehcache是一个成熟的缓存框架，可以直接使用它来管理缓存。
+Spring提供了对缓存功能的抽象：即允许绑定不同的缓存解决方案，但本身不直接提供缓存功能的实现。
+Ehcache是一个纯Java进程内缓存框架，具有快速，精干等特点。它是Hibernate中的默认缓存框架。
+Ehcache安装
+<dependency>
+  <groupId>net.sf.ehcache</groupId>
+  <artifactId>ehcache</artifactId>
+  <version>2.10.2</version>
+  <type>pom</pom>
+</dependency>
+
+Spring
+如果项目使用Maven管理，添加如下依赖到pom.xml中
+spring-context-support这个jar包中含有Spring对于缓存功能的抽象封装接口
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context-support</artifactId>
+  <version>4.1.4.RELEASE</version>
+</denpendency>
+
+Ehcache的使用
+  
