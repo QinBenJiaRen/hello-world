@@ -19,4 +19,36 @@ spring-context-support这个jar包中含有Spring对于缓存功能的抽象封�
 </denpendency>
 
 Ehcache的使用
+（1）在classpath下添加ehcache.xml
+    添加一个名为helloword的缓存
+    <diskStore path="java.io.tmpdir/ehcache"/>
+    <defalutCache
+        maxEntriesLocalHeap="10000"
+        eternal="false"
+        timeToIdleSeconds="120"
+        timeToLiveSeconds="120"
+        maxEntriesLocalDisk="100000000"
+        disExpiryThreadIntervalSeconds="120"
+        memoryStoreEvictionPolicy="LRU"/>
+        
+    <cache name="helloworld"
+        maxElementsInMemory="1000"
+        eternal="false"
+        timeToIdleSeconds="5"
+        timeToLiveSeconds=“5”
+        overflowToDisk="false"
+        memoryStoreEvictionPolicy="LRU"/>
+   (2) EhcacheDemo.java
+      Ehcache会自动加载classpath根目录下名为ehcache.xml文件。
+      工作步骤如下：
+      1.引用ehcache.xml声明的名为helloworld的缓存来创建Cache对象。
+      2.用键值对来实例化Element对象
+      3.将Element对象添加到Cache
+      4.然后用Cache的get方法获取Element对象
+      
+    Ehcache基本操作
+    Element,Cache, CacheManager是Ehcache最重要的API。
+    Element:缓存的元素，维护一个键值对。
+    Cache:Ehcache的核心类，它有多个Element,并被CacheManager管理。实现了对缓存的逻辑行为。
+    CacheManager:Cache的容器对象，并管理者Cache的生命周期。
   
