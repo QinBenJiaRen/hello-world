@@ -1,0 +1,11 @@
+1.Java阻塞队列LinkedBlockingQueue和非阻塞队列ConcurrentLinkedQueue
+
+2.ConcurrentLinkedQueue是一种基于链表实现的无界非阻塞线程安全队列，遵循先入先出规则。
+
+　　线程安全队列有两种实现方式：
+
+　　阻塞方式：对入队和出队操作加锁。阻塞队列。
+
+　　非阻塞方式：通过自旋CAS实现。例如：ConcurrentLinkedQueue
+
+3.
