@@ -1,0 +1,19 @@
+@PersistJobDataAfterExecution
+@DisallowConcurrentExecution
+
+Quartz 定时任务默认都是并发执行的，不会等待上一次任务执行完毕，只要间隔时间到就会执行，如果定时任执行太长，会长时间占用资源，导致其它任务堵塞。
+
+禁止并发执行的意思并不是不能同时执行多个 Job，而是不能并发执行同一个 Job Definition（由 JobDetail 定义），但是可以同时执行多个不同的 JobDetail，
+举例说明，我们有一个 Job 类，叫做 SayHelloJob，并在这个 Job 上加了 @DisallowConcurrentExecution 注解，然后在这个 Job上 定义了很多个 
+JobDetail，如 sayHelloToJoeJobDetail，sayHelloToMikeJobDetail，那么当 scheduler 启动时，不会并发执行多个 sayHelloToJoeJobDetail 
+或者 sayHelloToMikeJobDetail，但可以同时执行 sayHelloToJoeJobDetail 跟 sayHelloToMikeJobDetail。
+
+@PersistJobDataAfterExecution 是用在 Job 实现类上，表示一个有状态的任务，意思是当正常执行完 Job 后，JobDataMap 中的数据应该被改动，
+以被下一次调用时用。
+
+注意：当使用 @PersistJobDataAfterExecution 注解时，为了避免并发时，存储数据造成混乱，强烈建议把 @DisallowConcurrentExecution 注解也加上。
+假设定时任务的时间间隔为 3 秒，但 job 执行时间是 10 秒。当设置 @DisallowConcurrentExecution 以后程序会等任务执行完毕后再去执行，否则会在 3 秒
+时再启动新的线程执行。
+
+当设置 @PersistJobDataAfterExecution 时，在执行完 Job 的 execution 方法后保存 JobDataMap 当中固定数据，以便任务在重复执行的时候具有相同的 
+JobDataMap；在默认情况下也就是没有设置 @PersistJobDataAfterExecution 的时候每个 job 都拥有独立 JobDataMap。
